@@ -158,14 +158,14 @@ Feature: Working with Objects in S3
 
   @progress
   Scenario: Progress events
-    When I put a 2MB buffer to the key "progress_object" with progress events
+    When I put a 10MB buffer to the key "progress_object" with progress events
     Then more than 1 "httpUploadProgress" event should fire
-    And the "total" value of the progress event should equal 2MB
+    And the "total" value of the progress event should equal 10MB
     And the "loaded" value of the first progress event should be greater than 10 bytes
 
     When I read the key "progress_object" with progress events
     Then more than 1 "httpDownloadProgress" event should fire
-    And the "total" value of the progress event should equal 2MB
+    And the "total" value of the progress event should equal 10MB
     And the "loaded" value of the first progress event should be greater than 10 bytes
 
   @proxy
